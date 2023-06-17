@@ -1,13 +1,17 @@
 # GalaxEye Space Assignment
+
 GalaxEye problem statement
 
 ## Problem Description
+
 A user comes to a console which has a base-map and an option to draw an AOI
 (Area of Interest). Upon selecting and area they will be presented with all the tiles
 (pre configured satellite image’s metadata) which are intersecting that AOI.
 GalaxEye approaches you for help in developing this console. You can use any
 framework for this task.
+
 ## Setting the Context
+
 **AIM**: To create an entire full-stack website with docker compose where user can
 draw their AOI to see tiles which are interacting with AOI.
 Requirements: A docker compose configuration which will spun up a react frontend,
