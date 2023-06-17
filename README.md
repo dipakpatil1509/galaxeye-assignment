@@ -50,9 +50,9 @@ It will start both servers, react and API server
 http://localhost:3000
 ```
 ### Technologies
-Frontend: React
-Backend: Node.js/Express.js
-Database: MongoDB
+* Frontend: React
+* Backend: Node.js/Express.js
+* Database: MongoDB
 
 #### Frontend Required Packages/Tools 
 1. **@reduxjs/toolkit, react-redux, redux**: To maintain global states and update states across applications for multiple components
@@ -82,6 +82,13 @@ We are using MongoDB(NoSQL), as database because it solves our problem to find g
 6. Fetched data whenever the polygon is being created, edited and deleted data when polygon is being deleted
 7. Created Dockerfile for Frontend and backend server
 8. Created docker compose configuration file to manage different containers
+
+#### Images
+1. Working Prototype
+![Alt text](image-1.png)
+
+2. Docker Processes
+![Alt text](image-2.png)
 
 #### Folder Structure with description
 ```
