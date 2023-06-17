@@ -1,5 +1,5 @@
 import React from "react";
-import { Polygon, GeoJSON } from "react-leaflet";
+import { GeoJSON } from "react-leaflet";
 import { useAppSelector } from "../../store/hooks";
 import { GeoJsonObject } from "geojson";
 

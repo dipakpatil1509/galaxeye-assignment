@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+    galaxeye-backend:
+        build: ./galaxeye-backend
+        container_name: galaxeye_backend
+        restart: always
+        ports:
+            - '5000:5000'
+        volumes:
+            - ./galaxeye-backend:/galaxeye
+            - /galaxeye/node_modules
+
+    galaxeye-frontend:
+        build: ./galaxeye-frontend
+        container_name: galaxeye_frontend
+        restart: always
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./galaxeye-frontend:/galaxeye
+            - /galaxeye/node_modules
+        links:
+            - galaxeye-backend
+        stdin_open: true
+        tty: true
+
+            
