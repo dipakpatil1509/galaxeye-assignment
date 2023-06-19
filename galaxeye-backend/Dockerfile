@@ -6,6 +6,7 @@ COPY package*.json ./
 # install dependencies
 RUN npm install -D typescript
 RUN npm install --force 
+RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
 # Copy the current directory contents into the container at /
 COPY . .
 # Make port 5000 available to the world outside this container
