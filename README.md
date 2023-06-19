@@ -39,13 +39,15 @@ git clone https://github.com/dipakpatil1509/galaxeye-assignment.git
 cd galaxeye-assignment
 ```
 ##### Running the Application
-1. Start the application using Docker Compose:
+1. Update MONGO_DB_URI in galaxeye-backend/.env with your MongoDB URI
+2. Update REACT_APP_API in galaxeye-frontend/.env with IP of the backend server
+3. Start the application using Docker Compose:
 ```shell
 docker-compose up
 ```
 It will start both servers, react and API server
 
-2. Access the application in your web browser:
+4. Access the application in your web browser:
 ```shell
 http://localhost:3000
 ```
