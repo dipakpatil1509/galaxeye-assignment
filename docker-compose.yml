@@ -6,9 +6,31 @@ services:
         restart: always
         ports:
             - '5000:5000'
+        links:
+            - mongodb
+        depends_on:
+            - mongodb
+        environment:
+            WAIT_HOSTS: mongodb:27017
         volumes:
             - ./galaxeye-backend:/galaxeye
             - /galaxeye/node_modules
+        networks:
+            - node-webapp-network
+
+    mongodb:
+        container_name: mongodb
+        image: mongo:6.0
+        volumes:
+            - mongo:/data/db
+        ports:
+            - "27017:27017"
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=dipak
+            - MONGO_INITDB_ROOT_PASSWORD=password
+            - MONGO_INITDB_DATABASE=admin
+        networks:
+            - node-webapp-network
 
     galaxeye-frontend:
         build: ./galaxeye-frontend
@@ -23,5 +45,13 @@ services:
             - galaxeye-backend
         stdin_open: true
         tty: true
+
+networks:
+    node-webapp-network:
+        driver: bridge
+volumes:
+    mongo:
+        driver: local
+        
 
             

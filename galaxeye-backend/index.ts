@@ -5,6 +5,7 @@ dotenv.config();
 import dbConnect from "./mongo/mongoose";
 import routes from "./src/routes/index.routes";
 import cors from "cors";
+import geolocationService from "./src/services/geolocation.service";
 
 const app = express();
 const port = parseInt(process.env.PORT || "3000");
@@ -40,4 +41,9 @@ dbConnect().then(() => {
 	app.listen(port, "0.0.0.0", () => {
 		console.log(`Example app listening at http://localhost:${port}`);
 	});
+	geolocationService.post_location().then((res:any)=>{
+		console.log(res)
+	}).catch((err:any)=>{
+		console.log(err)
+	})
 });

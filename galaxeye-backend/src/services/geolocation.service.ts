@@ -64,6 +64,7 @@ const post_location = async (): Promise<APIResponse> => {
 
 	return sendResponse({
 		data: {},
+		message: "Successfully inserted data from the dataset"
 	});
 };
 
