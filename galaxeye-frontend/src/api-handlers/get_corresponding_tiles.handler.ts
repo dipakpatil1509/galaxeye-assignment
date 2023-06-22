@@ -5,31 +5,37 @@ import store from "../store/store";
 import { setCorrespondingTiles } from "../store/geo/geo.slice";
 
 export type GeoDataAPIResponse = {
-	type: string;
-	properties: {
-		fill: string;
-	};
-	geometry: {
-		type: string;
-		coordinates: LatLngExpression[] | LatLngExpression[][] | LatLngExpression[][][];
-	};
-	create_datetime: Date;
+    type: string;
+    properties: {
+        fill: string;
+    };
+    geometry: {
+        type: string;
+        coordinates:
+            | LatLngExpression[]
+            | LatLngExpression[][]
+            | LatLngExpression[][][];
+    };
+    create_datetime: Date;
 };
 
 export type GeoDirectDataAPIResponse = {
-	correspoding_tiles: GeoDataAPIResponse[];
+    correspoding_tiles: GeoDataAPIResponse[];
 };
 
 export default async function ({
-	leaf_id,
-	type = "",
-	coordinates = [],
+    leaf_id,
+    type = "",
+    coordinates = [],
 }: {
-	leaf_id: number;
-	type: string;
-	coordinates: LatLngExpression[] | LatLngExpression[][] | LatLngExpression[][][];
+    leaf_id: number;
+    type: string;
+    coordinates:
+        | LatLngExpression[]
+        | LatLngExpression[][]
+        | LatLngExpression[][][];
 }) {
-	try {
+    try {
         if (!leaf_id || coordinates.length === 0) {
             return;
         }
@@ -40,15 +46,20 @@ export default async function ({
                 type,
                 coordinates,
             },
-        })
+        });
         store.dispatch(
             setCorrespondingTiles({
                 key: leaf_id,
-                value: (res.data as GeoDirectDataAPIResponse)?.correspoding_tiles,
+                value: (res.data as GeoDirectDataAPIResponse)
+                    ?.correspoding_tiles,
             })
         );
-    } catch (error) {
+    } catch (error: any) {
         console.log(error);
-        alert("OOPS! Error Occured. Please check console for the error!");
+        alert(
+            "OOPS! " +
+                (error?.message ||
+                    "Error Occured. Please check console for the error!")
+        );
     }
 }

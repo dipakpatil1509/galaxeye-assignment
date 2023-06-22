@@ -16,6 +16,9 @@ async function post_location(req: Request, res: Response, next: NextFunction) {
 	console.log(req.body, "post_location");
 	try {
 		const response = await geolocationService.post_location();
+		if(!response.success){
+			throw Error(response.message)
+		}
 		res.status(200).json(sendResponse(response));
 	} catch (err: any) {
 		console.error(`Error while creating`, err.message);
