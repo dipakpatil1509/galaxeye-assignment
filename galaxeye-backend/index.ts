@@ -41,9 +41,9 @@ dbConnect().then(() => {
 	app.listen(port, "0.0.0.0", () => {
 		console.log(`Example app listening at http://localhost:${port}`);
 	});
-	// geolocationService.post_location().then((res:any)=>{
-	// 	console.log(res)
-	// }).catch((err:any)=>{
-	// 	console.log(err)
-	// })
+	geolocationService.post_location().then((res:any)=>{
+		console.log(res)
+	}).catch((err:any)=>{
+		console.log(err)
+	})
 });

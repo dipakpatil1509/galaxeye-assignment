@@ -7,9 +7,9 @@ declare global {
 }
 
 const { DB_HOST, DB_NAME, DB_PASS, DB_PORT, DB_USER } = process.env;
-// let uri = `mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}`; //process.env.MONGO_DB_URI;
+let uri = `mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}`; //process.env.MONGO_DB_URI;
 // const db = process.env.MONGO_DB;.
-let uri = `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`
+// let uri = `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`
 
 console.log(uri)
 
