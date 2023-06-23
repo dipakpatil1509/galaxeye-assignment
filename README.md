@@ -181,3 +181,14 @@ We are using MongoDB(NoSQL), as database because it solves our problem to find g
                     geo.slice.ts (Geo State Slice including actions and states)
                     geo.type.ts (Types of the state)
 ```
+
+
+## Testing
+
+To test the API, we are using Mocha framework and Chai assertion library for node
+To test :
+```shell
+npm run build
+npm test
+```
+<sub>*Testing is not added in docker, please test without docker shell</sub>
