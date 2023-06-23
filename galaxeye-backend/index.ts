@@ -10,7 +10,7 @@ import geolocationService from "./src/services/geolocation.service";
 const app = express();
 const port = parseInt(process.env.PORT || "3000");
 
-app.use(cors())
+app.use(cors());
 // support parsing of application/json type post data
 app.use(express.json());
 
@@ -37,13 +37,17 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 	return;
 });
 
+module.exports = app.listen(port, "0.0.0.0", () => {
+	console.log(`Example app listening at http://localhost:${port}`);
+});
+
 dbConnect().then(() => {
-	app.listen(port, "0.0.0.0", () => {
-		console.log(`Example app listening at http://localhost:${port}`);
-	});
-	geolocationService.post_location().then((res:any)=>{
-		console.log(res)
-	}).catch((err:any)=>{
-		console.log(err)
-	})
+	geolocationService
+		.post_location()
+		.then((res: any) => {
+			console.log(res);
+		})
+		.catch((err: any) => {
+			console.log(err);
+		});
 });

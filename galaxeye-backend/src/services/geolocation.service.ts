@@ -22,6 +22,9 @@ export type geolocationBody = {
 const get_location = async (geolocationBody: geolocationBody): Promise<APIResponse> => {
 	try {
 		const { type, coordinates } = geolocationBody;
+		if(!type || !coordinates || coordinates.length === 0){
+			throw new Error("Type and coordinates both are required")
+		}
 		const interesting_data = await KarnatakaGeoData.find({
 			geometry: {
 				$geoIntersects: {
@@ -40,7 +43,7 @@ const get_location = async (geolocationBody: geolocationBody): Promise<APIRespon
 			});
 			const compositePolygon = multiPolygon(featureCollection)
 
-			console.log(JSON.stringify(compositePolygon))
+			// console.log(JSON.stringify(compositePolygon))
 			
 			const isWithinPoly = booleanWithin(
 				{
@@ -50,7 +53,7 @@ const get_location = async (geolocationBody: geolocationBody): Promise<APIRespon
 				compositePolygon
 			);
 
-			console.log(isWithinPoly)
+			// console.log(isWithinPoly)
 
 			if (!isWithinPoly) {
 				throw new Error("Correspoding tiles are not covering given polygon");
